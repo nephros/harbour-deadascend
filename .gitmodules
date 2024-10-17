@@ -1,0 +1,3 @@
+[submodule "extensions/qak"]
+	path = extensions/qak
+	url = https://github.com/larpon/qak

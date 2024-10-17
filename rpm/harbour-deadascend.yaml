@@ -1,5 +1,6 @@
 Name: harbour-deadascend
 Summary: A horde of zombies have chased you to the old radio tower
+# remember to update the assets_version macro:
 Version: 1.1.3
 Release: 0
 Group: Applications
@@ -40,9 +41,14 @@ Description: |
 
 #SetupOptions: -q -n %{name}-%{version}
 
-#Macros:
+Macros:
+  # avoid mangling the data package version by tar_git/obs build
+  - 'assets_version;1.1.3'
+  # virtual name to Require/Provide, should not be the same as the subpackage name!
+  - 'assets_pkgname;%{name}-assets'
 #Macros2:
-#Requires:
+Requires:
+  - '%{assets_pkgname} = %{assets_version}'
 PkgBR:
   - qt5-qttools-linguist
   - qt5-qmake
@@ -61,7 +67,7 @@ NoIconCache: true
 Files:
   - '%license LICENSE'
   - '%{_bindir}/*'
-  - '%{_datadir}/%{name}/'
+  - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/applications/%{name}.desktop'
   - '%{_datadir}/icons/*/*/apps/%{name}.png'
   - '%{_datadir}/icons/*/*/apps/%{name}.svg'
@@ -73,3 +79,15 @@ RpmLintIgnore:
   - 'invalid-url'
   - 'desktopfile-without-binary'
   - 'explicit-lib-dependency'
+
+SubPackages:
+    - Name:  data
+      AutoDepend: false
+      Requires:
+        - '%{name}'
+      Provides:
+        - '%{assets_pkgname} = %{assets_version}'
+      Summary: Resources for %{name}
+      Group: Applications
+      Files:
+        - '%{_datadir}/%{name}/assets.rcc'

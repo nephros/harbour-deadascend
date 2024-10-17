@@ -7,6 +7,8 @@ Name:       harbour-deadascend
 
 # >> macros
 # << macros
+%define assets_version 1.1.3
+%define assets_pkgname %{name}-assets
 
 Summary:    A horde of zombies have chased you to the old radio tower
 Version:    1.1.3
@@ -18,6 +20,7 @@ Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-deadascend.yaml
 Source101:  harbour-deadascend-rpmlintrc
 Patch0:     qak-qt5.6.patch
+Requires:   %{assets_pkgname} = %{assets_version}
 BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -58,6 +61,15 @@ Links:
   Donation: https://openrepos.net/donate
 %endif
 
+
+%package data
+Summary:    Resources for %{name}
+Group:      Applications
+Requires:   %{name}
+Provides:   %{assets_pkgname} = %{assets_version}
+
+%description data
+%{summary}.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -114,9 +126,15 @@ desktop-file-install --delete-original       \
 %defattr(-,root,root,-)
 %license LICENSE
 %{_bindir}/*
-%{_datadir}/%{name}/
+%dir %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.png
 %{_datadir}/icons/*/*/apps/%{name}.svg
 # >> files
 # << files
+
+%files data
+%defattr(-,root,root,-)
+%{_datadir}/%{name}/assets.rcc
+# >> files data
+# << files data

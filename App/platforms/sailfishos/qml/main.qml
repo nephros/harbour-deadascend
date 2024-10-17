@@ -75,6 +75,7 @@ ApplicationWindow {
         }
     }
 
+    /*
     View {
         id: view
         visible: back.opacity > 0
@@ -84,6 +85,72 @@ ApplicationWindow {
         mattes: true
         mattesColor: "black"
 
+        viewport.fillMode: Image.PreserveAspectFit
+        viewport.width: Screen.width
+        viewport.height: Math.floor(Screen.height*Screen.widthRatio)
+
+        Item {
+            id: back
+            anchors { fill: parent }
+            //color: "white"
+
+            opacity: 0.99
+
+            Behavior on opacity {
+                NumberAnimation { duration: 1500 }
+            }
+
+            Image {
+                id: publisherImage
+                width: parent.width * 0.8
+                fillMode: Image.PreserveAspectFit
+                anchors.centerIn: parent
+                source: back.opacity > 0 ? App.getAsset('publisher.png') : ''
+
+                Behavior on opacity {
+                    NumberAnimation { duration: 500 }
+                }
+            }
+
+            Image {
+                id: studioImage
+                opacity: 0
+                width: parent.width * 0.8
+                fillMode: Image.PreserveAspectFit
+                anchors.centerIn: parent
+                source: back.opacity > 0 ? App.getAsset('studio.png') : ''
+
+                Behavior on opacity {
+                    NumberAnimation { duration: 1000 }
+                }
+            }
+
+            Timer {
+                id: crossFadeTimer
+                running: back.opacity == 1
+                interval: 1000
+                onTriggered: {
+                    publisherImage.opacity = 0
+                    studioImage.opacity = 1
+                }
+            }
+
+        }
+
+    }
+    */
+    Item {
+        id: view
+        visible: back.opacity > 0
+
+        anchors { fill: parent }
+
+        property bool mattes: true
+        property color mattesColor: "black"
+
+        Image {
+            id: viewport
+        }
         viewport.fillMode: Image.PreserveAspectFit
         viewport.width: Screen.width
         viewport.height: Math.floor(Screen.height*Screen.widthRatio)

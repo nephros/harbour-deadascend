@@ -49,11 +49,13 @@ Custom:
   PackagingRepo: https://github.com/nephros/harbour-deadascend
 PackageIcon: https://github.com/larpon/DeadAscend/raw/master/gfx/icon.svg
 Screenshots:
- - https://blackgrain.dk/games/deadascend/screenshots/screen3.png
- - https://blackgrain.dk/games/deadascend/screenshots/screen4.png
- - https://blackgrain.dk/games/deadascend/screenshots/screen5.png
+ - %{url}/screenshots/screen3.png
+ - %{url}/screenshots/screen4.png
+ - %{url}/screenshots/screen5.png
 Links:
   Homepage: %{url}
+  Bugtracker: https://github.com/nephros/harbour-deadascend/issues
+  Donation: https://openrepos.net/donate
 %endif
 
 

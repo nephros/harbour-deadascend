@@ -3,7 +3,6 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 
 import Qak 1.0
-import QtFirebase 1.0
 
 import "qml"
 
@@ -158,106 +157,4 @@ Application {
             back.opacity = 1
         }
     }
-
-    Timer {
-        id: bannerRetryTimer
-        interval: 45000
-        property int reloads: 0
-        onTriggered: {
-            if(reloads < 50) {
-                banner.load()
-                reloads++
-            } else
-                App.info('Giving up banner ad reload')
-        }
-    }
-
-    Timer {
-        id: interstitialRetryTimer
-        interval: 45000
-        property int reloads: 0
-        onTriggered: {
-            if(reloads < 50) {
-                interstitial.load()
-                reloads++
-            } else
-                App.info('Giving up interstitial reload')
-        }
-    }
-
-    // QtFirebase
-    property alias analytics: analytics
-    property alias banner: banner
-    property alias interstitial: interstitial
-
-    AdMob {
-        appId: Qt.platform.os == "android" ? "ca-app-pub-6606648560678905~8027290070" : "ca-app-pub-6606648560678905~9364422479"
-
-        testDevices: [
-            "01987FA9D5F5CEC3542F54FB2DDC89F6",
-            "d206f9511ffc1bc2c7b6d6e0d0e448cc"
-        ]
-    }
-
-    AdMobBanner {
-        id: banner
-
-        adUnitId: Qt.platform.os == "android" ? "ca-app-pub-6606648560678905/9504023277" : "ca-app-pub-6606648560678905/1841155673"
-
-        visible: loaded
-        onVisibleChanged: {
-            if(Qt.platform.os === "android")
-                moveTo(AdMobBanner.PositionTopCenter)
-        }
-
-        width: Qt.platform.os === "android" ? 320 : application.width //parent.width
-        height: 50
-
-        request: AdMobRequest {}
-
-        onReadyChanged: if(ready) load()
-
-        onError: {
-            //console.error('AdMobBanner error',code,message,width,height)
-            bannerRetryTimer.restart()
-        }
-
-    }
-
-    AdMobInterstitial {
-        id: interstitial
-        adUnitId: Qt.platform.os == "android" ? "ca-app-pub-6606648560678905/1980756471" : "ca-app-pub-6606648560678905/1701554870"
-
-        request: AdMobRequest {}
-
-        onReadyChanged: if(ready) load()
-
-        onClosed: load()
-
-        onError: interstitialRetryTimer.restart()
-    }
-
-    Analytics {
-        id: analytics
-
-        enabled: true
-
-        minimumSessionDuration: 5000
-
-        sessionTimeout: 10000
-
-        Component.onCompleted: {
-            App.event.sub('game/object/clicked',function(e){
-                analytics.logEvent('Object','Click',e.name)
-                analytics.logEvent('Object','Click_'+e.name)
-                analytics.logEvent('Object','Click_'+e.name+'_at_'+e.at)
-                if(e.at === 'inventory')
-                    analytics.logEvent('Object','Inventory_click',e.name)
-                else
-                    analytics.logEvent('Object','Other_click',e.name)
-            })
-        }
-    }
-
-
 }

@@ -37,11 +37,6 @@ CONFIG(release, debug|release) {
 # Import Qak
 include(../extensions/qak/qak.pri)
 
-# Make these modules of QtFirebase
-QTFIREBASE_CONFIG += analytics admob
-# include QtFirebase
-include(../extensions/QtFirebase/qtfirebase.pri)
-
 PLATFORMS_DIR = $$PWD/platforms
 
 ios: {

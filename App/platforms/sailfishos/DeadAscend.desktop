@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Icon=DeadAscend
+# Note that these are useless in sandboxed apps:
+X-Nemo-Application-Type=qtquick2
+X-Nemo-Single-Instance=yes
+Exec=invoker -t qtquick2 /usr/bin/DeadAscend
+Name=Dead Ascend
+
+[X-Sailjail]
+ApplicationName=Dead Ascend
+OrganizationName=Black Grain
+Permissions=
+
+#[X-HarbourBackup]
+#BackupConfigList=/org/nephros/template-app
+#BackupPathList=.local/share/org.nephros.sailfish/AppTemplate/

@@ -69,6 +69,14 @@ android: {
 
 }
 
+sailfishos: {
+    CONFIG += sailfishapp \
+              sailfishapp_no_deploy_qml
+
+    DISTFILES += \
+        $$PLATFORMS_DIR/sailfishos/$${TARGET}.desktop
+}
+
 # Adds extra make target entry for assets
 # This is to speed up build process and be more memory efficient
 # Remember to actually run it: (custom step in QtCreator, "make assetsrcc" from commandline)

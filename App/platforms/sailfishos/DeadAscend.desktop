@@ -8,10 +8,16 @@ Exec=invoker -t qtquick2 /usr/bin/DeadAscend
 Name=Dead Ascend
 
 [X-Sailjail]
-ApplicationName=Dead Ascend
-OrganizationName=Black Grain
+# these are used in mail.cpp:
+#ApplicationName=Dead Ascend
+#OrganizationName=Black Grain
+
+# spaces not allowed:
+ApplicationName=DeadAscend
+# "Application development organization as a reverse domain name"
+OrganizationName=dk.blackgrain
 Permissions=
 
 #[X-HarbourBackup]
-#BackupConfigList=/org/nephros/template-app
-#BackupPathList=.local/share/org.nephros.sailfish/AppTemplate/
+#BackupConfigList=/dk/blackgrain/DeadAscend
+#BackupPathList=.local/share/dk.blackgrain/DeadAscend/

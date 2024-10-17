@@ -18,12 +18,15 @@ int main(int argc, char *argv[])
 
 #ifdef LIBSAILFISHAPP_SAILFISHAPP_H
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    // these should be set already through the .desktop file:
+    //app->setOrganizationName("Black Grain");
+    //app->setApplicationName("Dead Ascend");
 #else
     QScopedPointer<QGuiApplication> app(QGuiApplication app(argc, argv));
-#endif
     app->setOrganizationName("Black Grain");
-    app->setOrganizationDomain("blackgrain.dk");
     app->setApplicationName("Dead Ascend");
+#endif
+    app->setOrganizationDomain("blackgrain.dk");
 
     #ifdef VERSION
     //app.setApplicationVersion(QString(VERSION));

@@ -15,9 +15,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<LanguageSwitcher, 1>("LanguageSwitcher", 1, 0, "LanguageSwitcher");
 
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    app.setOrganizationName("Black Grain");
-    app.setOrganizationDomain("blackgrain.dk");
-    app.setApplicationName("Dead Ascend");
+    app->setOrganizationName("Black Grain");
+    app->setOrganizationDomain("blackgrain.dk");
+    app->setApplicationName("Dead Ascend");
 
     #ifdef VERSION
     //app.setApplicationVersion(QString(VERSION));
@@ -87,5 +87,5 @@ int main(int argc, char *argv[])
 
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 
-    return app.exec();
+    return app->exec();
 }

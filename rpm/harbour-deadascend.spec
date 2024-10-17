@@ -60,7 +60,7 @@ Links:
 
 
 %prep
-%setup -q -a 1 -n %{name}-%{version}
+%setup -q -n %{name}-%{version}
 
 # qak-qt5.6.patch
 %patch0 -p1
@@ -93,7 +93,7 @@ rm -rf %{buildroot}
 
 # >> install post
 install -d %{buildroot}%{_datadir}/applications
-install -p -m 0644 %SOURCE2 %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -p -m 0644 App/platforms/sailfishos/DeadAscend.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 install -d %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
 install -p -m 0644 gfx/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg

@@ -38,7 +38,7 @@ Description: |
       Donation: https://openrepos.net/donate
     %endif
 
-SetupOptions: -q -a 1 -n %{name}-%{version}
+#SetupOptions: -q -n %{name}-%{version}
 
 #Macros:
 #Macros2:

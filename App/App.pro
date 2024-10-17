@@ -69,7 +69,7 @@ android: {
 
 }
 
-sailfishos: {
+linux: {
     CONFIG += sailfishapp \
               sailfishapp_no_deploy_qml
 

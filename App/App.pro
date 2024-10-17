@@ -75,6 +75,8 @@ linux: {
     DISTFILES += \
         $$SFOS_PLATFORM_DIR/$${TARGET}.desktop \
         $$SFOS_PLATFORM_DIR/sailfishos.pri \
+        $$SFOS_PLATFORM_DIR/sailfishos.qrc \
+        $$SFOS_PLATFORM_DIR/qml/main.qml \
         $$SFOS_PLATFORM_DIR/icons/icons.pri \
         $$SFOS_PLATFORM_DIR/icons/svgs/harbour-deadascent.svg \
         $$SFOS_PLATFORM_DIR/icons/svgs/harbour-deadascent2.svg

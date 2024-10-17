@@ -94,13 +94,13 @@ int main(int argc, char *argv[])
 
     engine.addImportPath("qrc:///");
 
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
-
 #ifdef LIBSAILFISHAPP_SAILFISHAPP_H
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-    view->setSource(QUrl(QStringLiteral("qrc:///main.qml")));
+    view->setSource(QStringLiteral("qrc:///sailfishos/main.qml"));
     view->show();
+#else
+    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
 #endif
 
     return app->exec();

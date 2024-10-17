@@ -6,6 +6,8 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml/QQmlApplicationEngine>
 
+#include <QtQuick>
+#include <QDebug>
 #include <sailfishapp.h>
 
 int main(int argc, char *argv[])
@@ -14,7 +16,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<FPSText, 1>("FPSText", 1, 0, "FPSText");
     qmlRegisterType<LanguageSwitcher, 1>("LanguageSwitcher", 1, 0, "LanguageSwitcher");
 
+#ifdef LIBSAILFISHAPP_SAILFISHAPP_H
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+#else
+    QScopedPointer<QGuiApplication> app(QGuiApplication app(argc, argv));
+#endif
     app->setOrganizationName("Black Grain");
     app->setOrganizationDomain("blackgrain.dk");
     app->setApplicationName("Dead Ascend");
@@ -86,6 +92,13 @@ int main(int argc, char *argv[])
     engine.addImportPath("qrc:///");
 
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+
+#ifdef LIBSAILFISHAPP_SAILFISHAPP_H
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
+
+    view->setSource(QUrl(QStringLiteral("qrc:///main.qml")));
+    view->show();
+#endif
 
     return app->exec();
 }

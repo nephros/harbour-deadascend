@@ -6,13 +6,15 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml/QQmlApplicationEngine>
 
+#include <sailfishapp.h>
+
 int main(int argc, char *argv[])
 {
     qmlRegisterType<FileIO, 1>("FileIO", 1, 0, "FileIO");
     qmlRegisterType<FPSText, 1>("FPSText", 1, 0, "FPSText");
     qmlRegisterType<LanguageSwitcher, 1>("LanguageSwitcher", 1, 0, "LanguageSwitcher");
 
-    QGuiApplication app(argc, argv);
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app.setOrganizationName("Black Grain");
     app.setOrganizationDomain("blackgrain.dk");
     app.setApplicationName("Dead Ascend");

@@ -6,7 +6,7 @@ import QtQuick 2.0
 
 import Qak 1.0
 
-import "qml"
+import "qrc:///qml"
 
 import Sailfish.Silica 1.0
 

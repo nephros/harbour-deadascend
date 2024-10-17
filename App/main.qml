@@ -1,6 +1,4 @@
 import QtQuick 2.0
-// qmlimportscanner bug on iOS
-import QtQuick.Controls 1.4
 
 import Qak 1.0
 

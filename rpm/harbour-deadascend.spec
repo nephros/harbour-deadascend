@@ -17,6 +17,7 @@ URL:        https://blackgrain.dk/games/deadascend/
 Source0:    %{name}-%{version}.tar.gz
 Source100:  harbour-deadascend.yaml
 Source101:  harbour-deadascend-rpmlintrc
+Patch0:     qak-qt5.6.patch
 BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -59,6 +60,8 @@ Links:
 %prep
 %setup -q -a 1 -n %{name}-%{version}
 
+# qak-qt5.6.patch
+%patch0 -p1
 # >> setup
 # << setup
 

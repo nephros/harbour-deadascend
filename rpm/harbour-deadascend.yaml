@@ -8,8 +8,8 @@ URL: https://blackgrain.dk/games/deadascend/
 SCM: https://github.com/larpon/DeadAscend
 Sources:
     - '%{name}-%{version}.tar.gz'
-#Patches:
-#  - 'baz'
+Patches:
+  - 'qak-qt5.6.patch'
 Description: |
     A hand-drawn, open source, point'n'click-like 2D adventure game.
 

@@ -1,0 +1,14 @@
+diff --git a/extensions/qak/src/aid_p.cpp b/extensions/qak/src/aid_p.cpp
+index 94e062a..977693f 100644
+--- a/extensions/qak/src/aid_p.cpp
++++ b/extensions/qak/src/aid_p.cpp
+@@ -66,8 +66,7 @@ void AidPrivate::inspect(QVariant o)
+                     (jsv.isString() ? "string" : "") <<
+                     (jsv.isQObject() ? "qobject" : "") <<
+                     (jsv.isVariant() ? "variant" : "") <<
+-                    (jsv.isCallable() ? "callable" : "") <<
+-                    (jsv.isQMetaObject() ? "qmetaobject" : "")
++                    (jsv.isCallable() ? "callable" : "")
+                     ;
+     }
+ }

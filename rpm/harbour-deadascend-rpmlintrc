@@ -1,7 +1,8 @@
 from Config import *
 addFilter("summary-too-long")
 addFilter("description-line-too-long")
-addFilter("no-changelogname-tag")
-addFilter("invalid-url")
-addFilter("desktopfile-without-binary")
+addFilter(".* E: useless-provides")
+addFilter(".* E: no-changelogname-tag")
+addFilter(".* W: invalid-url")
+addFilter(".* W: desktopfile-without-binary")
 addFilter("explicit-lib-dependency")

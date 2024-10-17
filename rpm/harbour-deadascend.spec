@@ -81,7 +81,7 @@ Provides:   %{assets_pkgname} = %{assets_version}
 
 %build
 # >> build pre
-sed -i 's/androidextras//' extensions/qak/qak.pro
+#sed -i 's/androidextras//' extensions/qak/qak.pro
 
 %qmake5 -r \
 BIN_DIR=%{_bindir} \
@@ -104,18 +104,18 @@ rm -rf %{buildroot}
 # << install pre
 
 # >> install post
-install -d %{buildroot}%{_datadir}/applications
-install -p -m 0644 App/platforms/sailfishos/DeadAscend.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+#install -d %%{buildroot}%%{_datadir}/applications
+#install -p -m 0644 App/platforms/sailfishos/DeadAscend.desktop %%{buildroot}%%{_datadir}/applications/%%{name}.desktop
 
-install -d %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
-install -p -m 0644 gfx/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-
-for size in 86 108 128 172 256 512 1024; do
-install -d %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
-sailfish_svg2png -z 1.0 -f rgba -s 1 1 1 1 1 1 ${size} \
-%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ \
-%{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
-done
+#install -d %%{buildroot}%%{_datadir}/icons/hicolor/scalable/apps/
+#install -p -m 0644 gfx/icon.svg %%{buildroot}%%{_datadir}/icons/hicolor/scalable/apps/%%{name}.svg
+#
+#for size in 86 108 128 172 256 512 1024; do
+#install -d %%{buildroot}%%{_datadir}/icons/hicolor/${size}x${size}/apps/
+#sailfish_svg2png -z 1.0 -f rgba -s 1 1 1 1 1 1 ${size} \
+#%%{buildroot}%%{_datadir}/icons/hicolor/scalable/apps/ \
+#%%{buildroot}%%{_datadir}/icons/hicolor/${size}x${size}/apps/
+#done
 # << install post
 
 desktop-file-install --delete-original       \
@@ -128,8 +128,8 @@ desktop-file-install --delete-original       \
 %{_bindir}/*
 %dir %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/*/*/apps/%{name}.png
-%{_datadir}/icons/*/*/apps/%{name}.svg
+%{_datadir}/icons/*/*/apps/*.png
+%{_datadir}/icons/*/scalable/apps/*.svg
 # >> files
 # << files
 

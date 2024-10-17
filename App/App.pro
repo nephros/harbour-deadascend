@@ -70,11 +70,16 @@ android: {
 }
 
 linux: {
-    CONFIG += sailfishapp \
-              sailfishapp_no_deploy_qml
 
+    SFOS_PLATFORM_DIR = $$PLATFORMS_DIR/sailfishos
     DISTFILES += \
-        $$PLATFORMS_DIR/sailfishos/$${TARGET}.desktop
+        $$SFOS_PLATFORM_DIR/$${TARGET}.desktop \
+        $$SFOS_PLATFORM_DIR/sailfishos.pri \
+        $$SFOS_PLATFORM_DIR/icons/icons.pri \
+        $$SFOS_PLATFORM_DIR/icons/svgs/harbour-deadascent.svg \
+        $$SFOS_PLATFORM_DIR/icons/svgs/harbour-deadascent2.svg
+
+    include($$SFOS_PLATFORM_DIR/sailfishos.pri)
 }
 
 # Adds extra make target entry for assets

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Icon=DeadAscend
+Icon=harbour-deadascent
 # Note that these are useless in sandboxed apps:
 X-Nemo-Application-Type=qtquick2
 X-Nemo-Single-Instance=yes

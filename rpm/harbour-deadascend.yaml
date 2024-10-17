@@ -69,15 +69,16 @@ Files:
   - '%{_bindir}/*'
   - '%dir %{_datadir}/%{name}'
   - '%{_datadir}/applications/%{name}.desktop'
-  - '%{_datadir}/icons/*/*/apps/%{name}.png'
-  - '%{_datadir}/icons/*/*/apps/%{name}.svg'
+  - '%{_datadir}/icons/*/*/apps/*.png'
+  - '%{_datadir}/icons/*/scalable/apps/*.svg'
 
 RpmLintIgnore:
   - 'summary-too-long'
   - 'description-line-too-long'
-  - 'no-changelogname-tag'
-  - 'invalid-url'
-  - 'desktopfile-without-binary'
+  - '.* E: useless-provides'
+  - '.* E: no-changelogname-tag'
+  - '.* W: invalid-url'
+  - '.* W: desktopfile-without-binary'
   - 'explicit-lib-dependency'
 
 SubPackages:

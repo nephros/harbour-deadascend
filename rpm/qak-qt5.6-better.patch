@@ -1,0 +1,22 @@
+diff --git a/extensions/qak/src/aid_p.cpp b/extensions/qak/src/aid_p.cpp
+index 94e062a..e0a8625 100644
+--- a/extensions/qak/src/aid_p.cpp
++++ b/extensions/qak/src/aid_p.cpp
+@@ -1,3 +1,4 @@
++#include <QtGlobal>
+ #include "aid_p.h"
+ 
+ AidPrivate::AidPrivate(QObject *parent) : QObject(parent)
+@@ -66,8 +67,12 @@ void AidPrivate::inspect(QVariant o)
+                     (jsv.isString() ? "string" : "") <<
+                     (jsv.isQObject() ? "qobject" : "") <<
+                     (jsv.isVariant() ? "variant" : "") <<
++#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
+                     (jsv.isCallable() ? "callable" : "") <<
+                     (jsv.isQMetaObject() ? "qmetaobject" : "")
++#else
++                    (jsv.isCallable() ? "callable" : "")
++#endif
+                     ;
+     }
+ }

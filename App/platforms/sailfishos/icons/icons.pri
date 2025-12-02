@@ -8,8 +8,7 @@ appicon.sizes = \
     128 \
     172 \
     256 \
-    512 \
-    1024
+    512
 
 OUTDIR=/tmp
 

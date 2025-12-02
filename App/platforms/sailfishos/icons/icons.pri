@@ -33,6 +33,6 @@ appicon.CONFIG += no_check_exist
 
 # also install SVG:
 svg.path = $$PREFIX/share/icons/hicolor/scalable/apps
-svg.files = $${PWD}/svgs/harbour-deadascent.svg \
-            $${PWD}/svgs/harbour-deadascent2.svg
+svg.files = $${PWD}/svgs/harbour-deadascend.svg \
+            $${PWD}/svgs/harbour-deadascend2.svg
 

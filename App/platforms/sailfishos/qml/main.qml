@@ -15,7 +15,7 @@ ApplicationWindow {
 
     cover: Component { CoverPlaceholder {
         text: qsTr('Dead Ascend')
-        icon: "image://theme/harbour-deadascent2"
+        icon: "image://theme/harbour-deadascend2"
     }}
 
     visible: false

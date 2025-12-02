@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
     // these should be set already through the .desktop file:
     //app->setOrganizationName("Black Grain");
     //app->setApplicationName("Dead Ascend");
+    app->setOrganizationName("dk.blackgrain");
+    app->setApplicationName("DeadAscend");
 #else
     QScopedPointer<QGuiApplication> app(QGuiApplication app(argc, argv));
     app->setOrganizationName("Black Grain");

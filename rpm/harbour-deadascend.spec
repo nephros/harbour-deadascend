@@ -99,7 +99,9 @@ make assetsrcc -C App
 
 %install
 # >> install pre
-%make_install
+# Note: make_install does not do the right thing with DESTDIR vs INSTALL_ROOT
+
+%qmake5_install
 # << install pre
 
 # >> install post
